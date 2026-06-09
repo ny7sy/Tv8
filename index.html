@@ -1,1 +1,456 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- SEO Meta Tags -->
+  <title>غير جوك TV | ترفيه، أغاني، دردشة على مدار الساعة</title>
+  <meta name="description" content="غير جوك TV — قناة ترفيهية، أغاني، دردشة على مدار الساعة. قابل ناس جديد وأصدقاء حقيقيين. يلا ندردش سويه!" />
+  <meta name="keywords" content="غير جوك, غير جوك TV, قناة ترفيهية, دردشة, أغاني, بث مباشر, ترفيه عربي" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="غير جوك TV" />
+  <link rel="canonical" href="https://ghairjoke.tv/" />
+
+  <!-- Open Graph (Google & Social) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="غير جوك TV | ترفيه، أغاني، دردشة" />
+  <meta property="og:description" content="قناة ترفيهية على مدار الساعة — أغاني، دردشة، ناس جديد وأصدقاء حقيقيين. يلا ندردش سويه!" />
+  <meta property="og:url" content="https://ghairjoke.tv/" />
+  <meta property="og:site_name" content="غير جوك TV" />
+  <meta property="og:image" content="https://ghairjoke.tv/og-cover.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="غير جوك TV | ترفيه، أغاني، دردشة" />
+  <meta name="twitter:description" content="قناة ترفيهية على مدار الساعة. يلا ندردش سويه!" />
+  <meta name="twitter:image" content="https://ghairjoke.tv/og-cover.jpg" />
+
+  <!-- Favicon (emoji fallback, replace with real icon) -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- Schema.org Structured Data for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "غير جوك TV",
+    "url": "https://ghairjoke.tv/",
+    "description": "قناة ترفيهية — أغاني، دردشة، على مدار الساعة",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://ghairjoke.tv/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131a;
+      --card: #1a1a24;
+      --gold: #f5c842;
+      --gold2: #e6a800;
+      --purple: #7c3aed;
+      --purple-light: #a855f7;
+      --text: #f0eee8;
+      --muted: #9090a0;
+      --radius: 18px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Cairo', 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Ambient background glow ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 80% 10%, rgba(124,58,237,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 35% at 20% 80%, rgba(245,200,66,0.10) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 32px;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-logo .tv-icon {
+      font-size: 1.5rem;
+    }
+
+    .nav-live {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #ff4545;
+      background: rgba(255,69,69,0.12);
+      border: 1px solid rgba(255,69,69,0.3);
+      padding: 5px 14px;
+      border-radius: 20px;
+    }
+
+    .live-dot {
+      width: 8px; height: 8px;
+      background: #ff4545;
+      border-radius: 50%;
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      background: rgba(245,200,66,0.10);
+      border: 1px solid rgba(245,200,66,0.25);
+      padding: 6px 18px;
+      border-radius: 30px;
+      margin-bottom: 28px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #fff 30%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--purple-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.8;
+      margin-bottom: 48px;
+    }
+
+    .hero-desc strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    /* ── CTA Button ── */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
+      color: #0a0a0f;
+      font-family: 'Cairo', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 900;
+      padding: 18px 44px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 8px 32px rgba(245,200,66,0.35), 0 2px 8px rgba(0,0,0,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.25), transparent);
+      border-radius: 50px;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 14px 40px rgba(245,200,66,0.50), 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    .cta-btn:active { transform: translateY(0) scale(0.98); }
+
+    .cta-arrow {
+      font-size: 1.3rem;
+      direction: ltr;
+    }
+
+    /* ── Features strip ── */
+    .features {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 0 24px 72px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .feat-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 28px 30px;
+      flex: 1 1 220px;
+      min-width: 180px;
+      text-align: center;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .feat-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(245,200,66,0.3);
+    }
+
+    .feat-icon {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+
+    .feat-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .feat-sub {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── Divider quote ── */
+    .quote-strip {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 0 24px 72px;
+    }
+
+    .quote-strip p {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-weight: 700;
+      color: var(--text);
+      max-width: 600px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    .quote-strip p em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    /* ── Watch section ── */
+    .watch-section {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .watch-card {
+      background: var(--card);
+      border: 1px solid rgba(245,200,66,0.18);
+      border-radius: 24px;
+      padding: 48px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .watch-card::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: 50%;
+      transform: translateX(-50%);
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(245,200,66,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .watch-card h2 {
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      font-weight: 900;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .watch-card p {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 32px 24px 40px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      nav { padding: 12px 18px; }
+      .hero { padding: 60px 18px 40px; }
+      .cta-btn { font-size: 1rem; padding: 16px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <span class="tv-icon">📺</span>
+      غير جوك TV
+    </a>
+    <div class="nav-live">
+      <span class="live-dot"></span>
+      بث مباشر
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">📡 &nbsp; على الهواء الآن</div>
+
+    <h1>غير جوك <span>TV</span></h1>
+
+    <p class="hero-desc">
+      <strong>ترفيهية · أغاني · دردشة</strong><br>
+      على مدار الساعة<br>
+      قابل ناس جديد وأصدقاء حقيقيين<br>
+      <strong>يلا ندردش سويه 🎉</strong>
+    </p>
+
+    <a href="https://kar12.vercel.app/" class="cta-btn" target="_blank" rel="noopener">
+      <span>اضغط هنا للمشاهدة</span>
+      <span class="cta-arrow">←</span>
+    </a>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="feat-card">
+      <div class="feat-icon">🎵</div>
+      <div class="feat-title">أغاني</div>
+      <div class="feat-sub">موسيقى وأغاني طوال اليوم بدون توقف</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">💬</div>
+      <div class="feat-title">دردشة</div>
+      <div class="feat-sub">تفاعل مع المشاهدين في الوقت الحقيقي</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🤝</div>
+      <div class="feat-title">أصدقاء جديد</div>
+      <div class="feat-sub">قابل ناس من كل مكان وكوّن صداقات حقيقية</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🕐</div>
+      <div class="feat-title">24 ساعة</div>
+      <div class="feat-sub">بث مستمر على مدار الساعة طوال الأسبوع</div>
+    </div>
+  </section>
+
+  <!-- Quote / CTA repeat -->
+  <section class="quote-strip">
+    <p>ما تحتاج تدور <em>ترفيه</em> بعيد —<br>كل شي بمكان واحد 🎯</p>
+  </section>
+
+  <!-- Watch Card -->
+  <section class="watch-section">
+    <div class="watch-card">
+      <h2>شاهد قناة غير جوك TV الآن</h2>
+      <p>
+        ادخل مباشرةً على القناة وانضم للمجتمع.<br>
+        الدردشة مفتوحة والبث شغّال — لك كرسي دايم هنا.
+      </p>
+      <a href="https://kar12.vercel.app/" class="cta-btn" target="_blank" rel="noopener">
+        <span>اضغط هنا للمشاهدة</span>
+        <span class="cta-arrow">←</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 <a href="/">غير جوك TV</a> — جميع الحقوق محفوظة</p>
+  </footer>
+
+</body>
+</html>
